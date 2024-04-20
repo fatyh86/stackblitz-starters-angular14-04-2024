@@ -1,23 +1,23 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { Store, select } from '@ngrx/store';
-import { get_action } from './actions';
-import { allData } from './selector';
-import { Observable, tap } from 'rxjs';
+import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { Injectable } from "@angular/core";
+import { Store, select } from "@ngrx/store";
+import { get_action } from "./actions";
+import { allData } from "./selector";
+import { Observable, tap } from "rxjs";
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: "root",
 })
 export class service {
-  apiUrl = 'http://127.0.0.1:8000/api/';
-  // apiUrl = 'https://api.royalgaz.ro/api/';
+  // apiUrl = 'http://127.0.0.1:8000/api/';
+  apiUrl = "https://api.royalgaz.ro/api/";
 
-  Url = this.apiUrl + 'persoane';
+  Url = this.apiUrl + "persoane";
 
-  auth_token = localStorage.getItem('token');
+  auth_token = localStorage.getItem("token");
   headers = new HttpHeaders({
-    Content_Type: 'application/json',
-    Authorization: 'Bearer ' + this.auth_token,
+    Content_Type: "application/json",
+    Authorization: "Bearer " + this.auth_token,
   });
 
   constructor(private http: HttpClient, private store: Store) {}
@@ -43,7 +43,7 @@ export class service {
   __edit(data: any) {
     console.log(data);
 
-    const Url_id = this.Url + '/' + data.id;
+    const Url_id = this.Url + "/" + data.id;
     return this.http.put(Url_id, data, {
       headers: this.headers,
     });
@@ -57,18 +57,18 @@ export class service {
 
   // GET s by ID
   __get_id(id: number) {
-    const Url_id = this.Url + '/' + id;
+    const Url_id = this.Url + "/" + id;
     return this.http.get(Url_id, { headers: this.headers });
   }
 
   // Filter by column value
   __filterByColumn(db_name: any, column: string, value: any) {
-    let Url = this.apiUrl + db_name + '/search/' + column + '/' + value;
+    let Url = this.apiUrl + db_name + "/search/" + column + "/" + value;
     return this.http.get(Url, { headers: this.headers });
   }
 
   __getAllTableNames() {
-    let Url = this.apiUrl + 'alltables';
+    let Url = this.apiUrl + "alltables";
     return this.http.get(Url, { headers: this.headers });
   }
 
