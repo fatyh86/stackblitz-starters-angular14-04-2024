@@ -1,5 +1,8 @@
+<select name="nume_tabel" id="">
+    @for (table of tablesName$ | async; track $index) {
+        <option value="{{table.Tables_in_ysmtnrkt_royal}}">{{ table.Tables_in_ysmtnrkt_royal }}</option>
+        }
+</select>
 <p>forms-tables works!</p>
-@for (table of tablesName$ | async; track $index) {
-<div>{{ table.Tables_in_royal_api }}</div>
-}
-<!-- {{ tablesName$ | async | json }} -->
+
+<!-- {{tablesName$ | async | json }}  -->
