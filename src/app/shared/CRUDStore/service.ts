@@ -10,7 +10,7 @@ import { Observable, tap } from "rxjs";
 })
 export class service {
   // apiUrl = 'http://127.0.0.1:8000/api/';
-  apiUrl = "https://api.royalgaz.ro/api/";
+  apiUrl = "https://api/api/";
 
   Url = this.apiUrl + "persoane";
 
